@@ -16,15 +16,21 @@ import (
 
 func main() {
 	counts := make(map[string]int)
+
 	input := bufio.NewScanner(os.Stdin)
+	input.Split(bufio.ScanWords)
+
 	for input.Scan() {
 		counts[input.Text()]++
 	}
+
+	fmt.Printf("%+v\n", counts)
+
 	// NOTE: ignoring potential errors from input.Err()
 	for line, n := range counts {
-		if n > 1 {
-			fmt.Printf("%d\t%s\n", n, line)
-		}
+		// if n > 1 {
+		fmt.Printf("%d\t%s\n", n, line)
+		// }
 	}
 }
 
